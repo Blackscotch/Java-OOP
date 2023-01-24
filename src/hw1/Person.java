@@ -1,8 +1,10 @@
+package hw1;
+
 import java.util.LinkedHashSet;
 import java.util.Set;
 
 public class Person {
-    public static Set<Person> personSet = new LinkedHashSet<>();
+    public static Set<Person> personSet = new LinkedHashSet<Person>();
     private String name;
     private String sex;
     private Person father;

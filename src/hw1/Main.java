@@ -1,5 +1,4 @@
-import java.util.LinkedHashSet;
-import java.util.Set;
+package hw1;
 
 public class Main {
     public static void main(String[] args) {
@@ -31,7 +30,7 @@ public class Main {
         Person p3 = new Person("Jon", "M");
         Person p4 = new Person("Rebekka", "F");
         Person p5 = new Person("Smith", "M");
-        Person p6 = new Person("Smith Mockka", "M");
+        Person p6 = new Person("Mockka", "M");
 
         p1.setMother(p2);
         p2.setMother(p4);
@@ -42,7 +41,7 @@ public class Main {
             if (person.getMother() != null){
                 System.out.println("У человека "+person.getName()+ " есть мама " +person.getMother().getName());
             }
-            if (person.getName().equals("Smith Mockka")){
+            if (person.getName().equals("Smith")){
                 count++;
                 System.out.println("Есть человек № "+count+" с именем "+person.getName());
             }

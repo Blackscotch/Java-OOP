@@ -5,16 +5,18 @@ import java.util.Set;
 
 public class Person {
     public static Set<Person> personSet = new LinkedHashSet<Person>();
-    private String name;
-    private String sex;
+    private final String name;
+    private final String surname;
+    private final String sex;
     private Person father;
     private Person mother;
     private Person child;
     private Person brother;
     private Person sister;
 
-    public Person(String name, String sex) {
+    public Person(String name, String surname, String sex) {
         this.name = name;
+        this.surname = surname;
         this.sex = sex;
         personSet.add(this);
     }
@@ -25,6 +27,9 @@ public class Person {
 
     public String getName() {
         return name;
+    }
+    public String getSurname() {
+        return surname;
     }
 
     public Person getFather() {
@@ -68,6 +73,6 @@ public class Person {
     }
 
     public String getInfo(){
-        return String.format("Имя: %s, пол: %s", name, sex);
+        return String.format("Имя: %s, Фамилия: %s пол: %s", name, surname, sex);
     }
 }

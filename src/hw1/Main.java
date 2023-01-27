@@ -1,6 +1,9 @@
 package hw1;
 
+import java.util.Scanner;
+
 public class Main {
+    static Scanner sc = new Scanner(System.in);
     public static void main(String[] args) {
 //        Реализовать, с учетом ооп подхода, приложение для проведения исследований с генеалогическим древом.
 //        Идея: описать некоторое количество компонент, например:
@@ -10,40 +13,47 @@ public class Main {
 //        3. компонент для проведения исследований.
 //        4. Дополнительные компоненты, например отвечающие за вывод данных в консоль, загрузку и сохранение в файл, получение\построение отдельных моделей человека.
 //        Под “проведением исследования” можно понимать получение всех детей выбранного человека.
-//
-//        Описать в ООП стиле, логику взаимодействия объектов реального мира между собой: шкаф-человек.
-//        Какие члены должны быть у каждого из классов (у меня на семинаре студенты пришли к тому,
-//        чтобы продумать логику взаимодействия жена разрешает открыть дверцу шкафа мужу, после чего эту дверцу можно открыть)
-//        Подумать, как описать логику взаимодействия человека и домашнего питомца.
-//        Сценарий: “Человек “зовёт” котика “кис-кис”, котик отзывается.
-//        Какое ещё взаимодействие может быть?
-//        Продумать какие проблемы могут возникнуть в том коде, который они написали.
-//        Например в первой задаче (с генеалогическим древом) мы можем знать о двух людях,
-//        но не знаем в каких “отношениях” они были - двоюродные или троюродные, или мы точно знаем как звали прапрабабушку,
-//        но совершенно не знаем прабабушку - как хранить такие связи или что будет если в компоненту обхода передать ссылку на null-дерево.
-//        У задач нет единственного правильного решения
+
         GetTask();
     }
     private static void GetTask(){
-        Person p1 = new Person("Stiv", "M");
-        Person p2 = new Person("Rika", "F");
-        Person p3 = new Person("Jon", "M");
-        Person p4 = new Person("Rebekka", "F");
-        Person p5 = new Person("Smith", "M");
-        Person p6 = new Person("Mockka", "M");
+        Person p1 = new Person("Stiv", "Gamer", "M");
+        Person p2 = new Person("Rika", "Garret", "F");
+        Person p3 = new Person("Jon", "Gamer", "M");
+        Person p4 = new Person("Rebekka", "Gamer", "F");
+        Person p5 = new Person("Smith", "Gamer", "M");
+        Person p6 = new Person("Monika", "Gamer", "F");
+        Person p7 = new Person("Stiven", "Stivens", "M");
+        Person p8 = new Person("Mira", "Stivens", "F");
+        Person p9 = new Person("Gretta", "Stivens", "F");
 
-        p1.setMother(p2);
-        p2.setMother(p4);
-        System.out.println(p1.getInfo());
+        p1.setChild(p3);
+        p2.setChild(p3);
+        p1.setChild(p4);
+        p2.setChild(p4);
+        p3.setChild(p5);
+        p4.setChild(p6);
+        p7.setChild(p9);
+        p8.setChild(p9);
+//        System.out.println(p1.getInfo());
 
-        for (var person : Person.personSet) {
-            int count = 0;
-            if (person.getMother() != null){
-                System.out.println("У человека "+person.getName()+ " есть мама " +person.getMother().getName());
-            }
-            if (person.getName().equals("Smith")){
-                count++;
-                System.out.println("Есть человек № "+count+" с именем "+person.getName());
+        while (true){
+            System.out.println("Введите имя человека для просмотра его потомков.");
+            System.out.println("0 - для выхода из программы");
+            String name = sc.nextLine();
+            if (name.equals("0")){
+                System.out.println("Программа завершена");
+                break;
+            }else{
+                for (var person : Person.personSet) {
+                    if (person.getName().equals(name)){
+                        if (person.getChild() != null){
+                            System.out.println("У человека "+person.getName()+" "+person.getSurname()+ " есть дети :\n" +person.getChild().getInfo());
+                        }else {
+                            System.out.println("У человека "+person.getName()+" "+person.getSurname()+ " детей нет.");
+                        }
+                    }
+                }
             }
         }
     }

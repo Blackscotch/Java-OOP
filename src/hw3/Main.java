@@ -1,45 +1,18 @@
 package hw3;
 
+import java.util.ArrayList;
+
 public class Main {
     // Это стандартное решение, нужно сделать норм
-    public class SuperList {
-        private final int INIT_SIZE = 16;
-        private final int CUT_RATE = 4;
-        private String[] array = new String[INIT_SIZE];
-        private int pointer = 0;
+    public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("2");
+        list.add("3");
 
-
-        public void add(String item) {
-            if(pointer == array.length-1)
-                resize(array.length*2);
-            array[pointer++] = item;
-        }
-
-
-        public String get (int index) {
-            return array[index];
-        }
-
-
-        public void remove(int index) {
-            for (int i = index; i<pointer; i++)
-                array[i] = array[i+1];
-            array[pointer] = null;
-            pointer--;
-            if (array.length > INIT_SIZE && pointer < array.length / CUT_RATE)
-                resize(array.length/2);
-
-        }
-
-        public int size() {
-            return pointer;
-        }
-
-
-        private void resize(int newLength) {
-            String[] newArray = new String[newLength];
-            System.arraycopy(array, 0, newArray, 0, pointer);
-            array = newArray;
-        }
+        NewArrayList list2 = new NewArrayList();
+        list2.add("2");
+        list2.add("3");
+        System.out.println(list.size());
+        System.out.println(list2.size());
     }
 }

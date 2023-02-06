@@ -1,12 +1,11 @@
 package hw3;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Scanner;
 
 
-public class Main {
+public class OldMain {
     static Scanner sc = new Scanner(System.in);
     // Это стандартное решение, нужно сделать норм
     public static void main(String[] args) {
